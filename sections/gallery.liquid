@@ -1,0 +1,62 @@
+<div class = "gallery_section-container">
+    <h3>
+        {{ section.settings.title}}
+    </h3>
+    <div class = "gallery_image-container">
+        {% for block in section.blocks %}
+            <div class = "gallery_image-container">
+                <img src = " {{ block.settings.image  | img_url: 'master' }} " 
+                    alt = "image"
+                    width="100px"
+                    height="100px"/>
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+<style>
+    .gallery_inner-container {
+        display: flex;
+
+    }
+    .gallery_image-container{
+        width: 30%
+    }
+
+</style>
+
+{% schema %}
+{
+    "name": "Gallery Images",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Enter title",
+            "default": "Gallery Section"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image",
+            "name": "images",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "800 X 800 recommended"
+                }
+            ]
+        }
+    ],
+    "presets":[
+    {
+        "name": "Gallery Images",
+        "category": "Image"
+    }
+    ]
+}
+
+{% endschema %} 
